@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nome=prompt("Digite seu nome");
+        let distancia=parseFloat(prompt("digite a distancia"));
+        let velocidade=parseFloat(prompt("velocidade média"));
+        let consumo=parseFloat(prompt("consumo médio"));
+        let gasolina=parseFloat(prompt("valor da gasolina"));  
+        let tempo=distancia/velocidade;
+        let litros=distancia/consumo;
+        let gasto=litros*gasolina;
+        alert("olá "+nome+" o tempo estimado é "+tempo +" horas"+", serão necessarios "+litros+" litros, "+"você gastará "+gasto);
+
+    </script>
+
+</body>
+</html>
