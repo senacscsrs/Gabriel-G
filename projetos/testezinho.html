@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div>
+            <Label for="mensagem">mensagem</Label>
+            <input type="text" id="mensagem" name="mensagem" value="" placeholder="escreva uma mensagem pro backes">
+        </div>
+       <input type="button" value="mensagem" onclick="mostrardados()">
+    </form>
+    <script>
+        function mostrardados () {
+         let backes=document.getElementById("mensagem").value;
+         alert("backes, alguém te mandou esse recado: " + backes)
+
+
+        }
+    </script>
+</body>
+</html>
