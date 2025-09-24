@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Moedas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        label, select, input { margin: 8px 0; display: block; }
+        .resultado { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Conversor de Moedas</h2>
+    <label for="valor">Insira um valor em R$:</label>
+    <input type="number" id="valor" min="0" step="0.01">
+
+    <label for="moeda">Selecione a moeda para conversão:</label>
+    <select id="moeda">
+        <option value="USD">Dólar Americano</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">Libra</option>
+        <option value="MXN">Peso Mexicano</option>
+        <option value="BRL">Real</option>
+    </select>
+
+    <button onclick="converterMoeda()">Converter</button>
+
+    <div class="resultado" id="resultado"></div>
+
+    <script>
+        const taxas = {
+            USD: { nome: "Dólar Americano", simbolo: "US$", taxa: 5.03, locale: "en-US" },
+            EUR: { nome: "Euro", simbolo: "€", taxa: 5.00, locale: "de-DE" },
+            GBP: { nome: "Libra", simbolo: "£", taxa: 5.70, locale: "en-GB" },
+            MXN: { nome: "Peso Mexicano", simbolo: "MX$", taxa: 0.26, locale: "es-MX" },
+            BRL: { nome: "Real", simbolo: "R$", taxa: 1, locale: "pt-BR" }
+        };
+
+        function converterMoeda() {
+            const valorReais = parseFloat(document.getElementById('valor').value);
+            const moeda = document.getElementById('moeda').value;
+            const resultadoDiv = document.getElementById('resultado');
+
+            if (isNaN(valorReais) || valorReais <= 0) {
+                resultadoDiv.textContent = "Insira um valor válido.";
+                return;
+            }
+
+            const taxa = taxas[moeda].taxa;
+            const simbolo = taxas[moeda].simbolo;
+            const locale = taxas[moeda].locale;
+
+            let convertido = valorReais / taxa;
+            let formatado = simbolo + " " + convertido.toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            resultadoDiv.textContent = `Resultado: ${formatado}`;
+        }
+    </script>
+</body>
+</html>
